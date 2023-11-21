@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style/main.css">
+  <title>Yugi-Card.com</title>
+</head>
+<body>
+  <nav>
+    {{>navigation}}
+  </nav>
+  <main>
+    {{{body}}}
+  </main>
+</body>
+<script>
+  function getBase64Image(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file);
+    });
+  }
+
+  document.getElementById('card-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const imageInput = document.getElementById('img');
+    const selectedImage = imageInput.files[0];
+
+    if (!selectedImage) {
+      alert('Seleccione una imagen antes de enviar el formulario.');
+      return;
+    }
+
+    try {
+      const base64String = await getBase64Image(selectedImage);
+
+      const hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'image');
+      hiddenInput.setAttribute('value', base64String);
+
+      const form = event.target;
+      form.appendChild(hiddenInput);
+
+      form.submit();
+    } catch (error) {
+      console.error('Error al convertir la imagen a base64:', error);
+      alert('Hubo un error al procesar la imagen. Intente nuevamente.');
+    }
+  });
+</script>
+</html>

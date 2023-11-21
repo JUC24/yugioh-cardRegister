@@ -1,0 +1,34 @@
+<section>
+  <div class="home">
+    <form class="cardForm" action="/cards/edit/{{card._id}}?_method=put" method="post">
+      <input type="hidden" name="_method" value="put">
+      <label for="img">Image:
+        <input class="navSearch" type="file" id="img" accept="image/*" value="{{image}}">
+      </label>
+
+      <label for="name">Name:
+        <input class="navSearch" type="text" id="name" name="name" value="{{card.name}}">
+      </label>
+
+      <label for="cardtype">Card Type:
+        <input class="navSearch" type="text" id="cardtype" name="cardtype" value="{{card.cardtype}}">
+      </label>
+
+      <label for="description">Description:
+        <textarea class="navSearch" name="description" id="description" cols="30" rows="4">{{card.description}}</textarea>
+      </label>
+
+      <label for="battlep">Battle Points:
+        <input class="navSearch" type="number" id="battlep" name="battlep" value="{{card.battlep}}">
+      </label>
+
+      <label for="defensp">Defense Points:
+        <input class="navSearch" type="number" id="defensp" name="defensp" value="{{card.defensp}}">
+      </label>
+
+      <button class="searchBtn" type="submit">submit</button>
+    </class=>
+  </div>
+  <img class="cardFormImg--yugimoto" src="/images/yugimoto.png" alt="">
+  <img class="cardFormImg--magao" src="/images/magao.png" alt="">
+</section>

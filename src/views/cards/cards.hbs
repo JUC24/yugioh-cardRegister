@@ -1,0 +1,59 @@
+<section class="collectSection">
+  <div class="collectSection--control">
+    <form action="/cards/filter" method="get">
+      <label for="cardtype">Card Type:
+        <select class="navSearch" name="cardtype" id="cardtype">
+          <option value="#">---</option>
+          <option value="monster">Monster</option>
+          <option value="magic">Magic</option>
+          <option value="trap">Trap</option>
+        </select>
+      </label>
+      <button class="searchBtn" type="submit">Filter</button>
+    </form>
+    <form action="/cards/sort" method="get">
+      <label for="sortBy">Sort by:
+        <select class="navSearch" id="sortBy" name="sortBy">
+          <option value="#">---</option>
+          <option value="battlep">Battle Points</option>
+          <option value="name">Name</option>
+        </select>
+      </label>
+      <button class="searchBtn" type="submit">Sort</button>
+    </form>
+  </div>
+
+  {{#each cards}}
+    <div class="collectCard">
+      <div class="collectCard__image__container">
+        <img class="collectCard__image" src="data:image/jpeg;base64,{{image}}" alt="">
+      </div>
+      <div class="cardInfo">
+        <h2 class="border--line">Name: {{name}}</h2>
+        <span class="display--inline border--line">
+          <h3>Type:</h3>
+          <p>{{cardtype}}</p>
+        </span>
+        <span class="border--line--ifoDesc">
+          <h3 >Description:</h3>
+          <p>{{description}}</p>
+        </span>
+        <span class="display--inline border--line">
+          <h3>Battle Points:</h3>
+          <p>{{battlep}}</p>
+        </span>
+        <span class="display--inline border--line">
+          <h3>Defense Points:</h3>
+          <p>{{defensp}}</p>
+        </span>
+        <div class="collectCard__Control">
+          <a class="searchBtn" href="/cards/update/{{_id}}">Edit</a>
+          <form action="/cards/delete/{{_id}}?_method=DELETE" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button class="searchBtn" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</section>

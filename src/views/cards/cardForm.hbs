@@ -1,0 +1,38 @@
+<section>
+  <div class="home">
+    <form class="cardForm" id="card-form" action="/cards/new-card" method="post">
+      <label for="img">Image:
+        <input class="navSearch" class="navSearch" type="file" id="img" accept="image/*">
+      </label>
+
+      <label for="name">Name:
+        <input class="navSearch" type="text" id="name" name="name" required>
+      </label>
+
+      <label for="cardtype">Card Type:
+        <select class="navSearch" name="cardtype" id="cardtype">
+          <option value="empty">Chose</option>
+          <option value="monster">Monster</option>
+          <option value="magic">Magic</option>
+          <option value="trap">Trap</option>
+        </select>
+      </label>
+
+      <label for="description">Description:
+        <textarea class="navSearch" name="description" id="description" cols="30" rows="4"></textarea>
+      </label>
+
+      <label for = "battlep">Battle Points:
+        <input class="navSearch" type="number" id="battlep" name="battlep">
+      </label>
+
+      <label for="defensp">Defense Points:
+        <input class="navSearch" type="number" id="defensp" name="defensp">
+      </label>
+
+      <button class="searchBtn" type="submit">submit</button>
+    </form>
+  </div>
+  <img class="cardFormImg" src="/images/caiba.png" alt="">
+  <img class="cardFormImg--pegasus" src="/images/pegasus.png" alt="">
+</section>
